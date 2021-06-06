@@ -3,7 +3,7 @@
 This repository contains code for the paper "**Testing DNN-based Autonomous Driving Systems under Critical Environmental Conditions**"
 ## Dependencies
 - OS: Ubuntu 16.04
-- Packages: Tensorflow 1.2.0; Keras 1.2.2; and Pytorch 0.4.1.
+- Packages: Tensorflow 1.2.0, Keras 1.2.2, and Pytorch 0.4.1.
 
 Note: TACTIC relies on MUNIT to produce testing driving scenes. See more details about MUNIT in the repository  [https://github.com/NVlabs/MUNIT](https://github.com/NVlabs/MUNIT).
 
