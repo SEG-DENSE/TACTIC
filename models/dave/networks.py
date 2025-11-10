@@ -173,7 +173,7 @@ if __name__ == '__main__':
     from keras.preprocessing import image
     import numpy as np
     from keras.applications.imagenet_utils import preprocess_input
-
+    # use keras to process input image
 
     def preprocess_image(img_path, target_size=(100, 100)):
         img = image.load_img(img_path, target_size=target_size)
