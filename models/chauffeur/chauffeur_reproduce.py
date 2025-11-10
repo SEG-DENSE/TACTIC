@@ -144,6 +144,9 @@ if __name__ == '__main__':
         # return (mse / count) ** 0.5
         return (mse / count)
 
+    # Function to evaluate steering angle prediction errors.
+    # It loads model predictions and ground-truth labels, computes RMSE/MSE,
+    # re-predicts on snowy scene images, saves the results, and counts error distribution.
     def count_error():
         import pickle
         import csv
