@@ -40,6 +40,7 @@ class EAEngine(object):
         return kid
 
     def kill_bad(self, kid):
+        # This is a comment
         kid_fitness = self.fitness(kid)
         p_target = 1 / 5
         if self.best_fitness < kid_fitness:
