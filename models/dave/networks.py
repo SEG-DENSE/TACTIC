@@ -27,6 +27,7 @@ class bcolors:
 ###################
 # some utils
 ###################
+# Custom activation scaling layer that doubles the arctangent to bound steering angles.
 def atan_layer(x):
     return tf.multiply(tf.atan(x), 2)
 
@@ -35,6 +36,7 @@ def atan_layer_shape(input_shape):
     return input_shape
 
 
+# Helper to initialise dense layers with a truncated normal distribution.
 def normal_init(shape):
     # return K.truncated_normal(shape, stddev=0.1)
     initial = tf.truncated_normal(shape, stddev=0.1)
@@ -45,6 +47,7 @@ def normal_init(shape):
 # the DNN models
 ###################
 # the original architecture
+# Reproduction of the original DAVE-2 network for steering prediction.
 def Dave_orig(input_tensor=None, load_weights=False, weights_path=None):  # original dave
     if input_tensor is None:
         input_tensor = Input(shape=(100, 100, 3))
@@ -72,6 +75,7 @@ def Dave_orig(input_tensor=None, load_weights=False, weights_path=None):  # orig
 
 
 # removes the first batch normalization layer and normalizes the randomly initialized network weights
+# Variant that keeps architecture but explores alternative weight initialisation.
 def Dave_norminit(input_tensor=None, load_weights=False, weights_path=None):  # original dave with normal initialization
     if input_tensor is None:
         input_tensor = Input(shape=(100, 100, 3))
@@ -114,6 +118,7 @@ def Dave_norminit(input_tensor=None, load_weights=False, weights_path=None):  # 
 
 
 # cutting down the numbers of convo- lutional layers and fully connected layers
+# Lightweight variant with pooling and dropout regularisation to reduce overfitting.
 def Dave_dropout(input_tensor=None, load_weights=False, weights_path=None):  # simplified dave
     if input_tensor is None:
         input_tensor = Input(shape=(100, 100, 3))
@@ -142,6 +147,7 @@ def Dave_dropout(input_tensor=None, load_weights=False, weights_path=None):  # s
     return m
 
 
+# Compute the mean squared error (function name kept for historical reasons).
 def calc_rmse(yhat, label):
     mse = 0.
     count = 0
